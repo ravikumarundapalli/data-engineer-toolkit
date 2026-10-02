@@ -1,43 +1,461 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Data Engineer Toolkit — Free Developer Tools</title>
-<meta name="description" content="Free browser-based tools for data engineers: JSON formatter, JSON to SQL, CSV to SQL, Unix timestamp converter, and cron expression helper.">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Data Engineer Toolkit | Free Data Engineering Tools</title>
+
+  <meta name="description"
+        content="Free online tools for data engineers and developers. Format JSON, convert JSON and CSV to SQL, work with Unix timestamps, and generate Cron expressions.">
+
+  <meta name="keywords"
+        content="data engineer tools, SQL tools, JSON formatter, CSV to SQL, JSON to SQL, cron generator, Unix timestamp, AWS, ETL">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .hero {
+      padding: 70px 20px 55px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #4338ca;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 64px);
+      line-height: 1.05;
+      margin: 0 auto 20px;
+      max-width: 850px;
+    }
+
+    .hero h1 span {
+      color: #4f46e5;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-size: 18px;
+      line-height: 1.7;
+      color: #64748b;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-button {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .primary-button {
+      background: #4f46e5;
+      color: white;
+    }
+
+    .primary-button:hover {
+      background: #4338ca;
+      transform: translateY(-2px);
+    }
+
+    .secondary-button {
+      background: white;
+      color: #334155;
+      border: 1px solid #e2e8f0;
+    }
+
+    .secondary-button:hover {
+      border-color: #94a3b8;
+      transform: translateY(-2px);
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .section-heading p {
+      color: #64748b;
+      margin: 0 auto;
+      max-width: 650px;
+    }
+
+    .tools-section {
+      padding: 35px 20px 70px;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .tool-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 25px;
+      text-decoration: none;
+      color: inherit;
+      transition: 0.25s ease;
+      box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
+    }
+
+    .tool-card:hover {
+      transform: translateY(-5px);
+      border-color: #818cf8;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.10);
+    }
+
+    .tool-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: #eef2ff;
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+
+    .tool-card h3 {
+      margin: 0 0 9px;
+      font-size: 19px;
+    }
+
+    .tool-card p {
+      margin: 0;
+      color: #64748b;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .tool-link {
+      display: inline-block;
+      margin-top: 18px;
+      color: #4f46e5;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .features {
+      background: #f8fafc;
+      padding: 65px 20px;
+    }
+
+    .feature-grid {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .feature {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .feature h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .feature p {
+      margin: 0;
+      color: #64748b;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .about {
+      max-width: 850px;
+      margin: auto;
+      padding: 70px 20px;
+      text-align: center;
+    }
+
+    .about h2 {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .about p {
+      color: #64748b;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .cta {
+      margin: 0 20px 70px;
+      padding: 50px 25px;
+      text-align: center;
+      background: #111827;
+      color: white;
+      border-radius: 20px;
+    }
+
+    .cta h2 {
+      margin: 0 0 12px;
+      font-size: 30px;
+    }
+
+    .cta p {
+      color: #cbd5e1;
+      max-width: 600px;
+      margin: 0 auto 25px;
+      line-height: 1.7;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid #e2e8f0;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding-top: 45px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .section-heading h2,
+      .about h2,
+      .cta h2 {
+        font-size: 26px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<header class="nav">
-  <a class="brand" href="/">Data Engineer Toolkit</a>
-  <nav><a href="#tools">Tools</a><a href="#about">About</a></nav>
+
+<header>
+  <div class="container">
+    <a class="brand" href="./index.html">Data Engineer Toolkit</a>
+  </div>
 </header>
 
 <main>
-<section class="hero">
-  <span class="pill">100% browser-based • Free to start</span>
-  <h1>Useful tools for<br><span>Data Engineers.</span></h1>
-  <p>Fast, simple utilities for SQL, JSON, CSV, timestamps and everyday data-engineering work. No signup required.</p>
-  <a class="button" href="#tools">Explore tools</a>
-</section>
 
-<section id="tools" class="section">
-<h2>Free tools</h2>
-<div class="grid">
-  <a class="card" href="tools/json-formatter.html"><b>JSON Formatter</b><span>Format and validate JSON instantly.</span></a>
-  <a class="card" href="tools/json-to-sql.html"><b>JSON → SQL</b><span>Generate INSERT statements from JSON.</span></a>
-  <a class="card" href="tools/csv-to-sql.html"><b>CSV → SQL</b><span>Turn CSV rows into SQL INSERT statements.</span></a>
-  <a class="card" href="tools/timestamp.html"><b>Unix Timestamp</b><span>Convert Unix timestamps and dates.</span></a>
-  <a class="card" href="tools/cron.html"><b>Cron Helper</b><span>Build common cron schedules quickly.</span></a>
-</div>
-</section>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">
+      Free Tools for Data Engineers
+    </div>
 
-<section id="about" class="section about">
-<h2>Built for real-world data work</h2>
-<p>These lightweight tools run directly in your browser for speed and privacy. More AWS, SQL, Spark, Python and ETL utilities can be added as the site grows.</p>
-</section>
+    <h1>
+      Work smarter with your
+      <span>data engineering toolkit.</span>
+    </h1>
+
+    <p>
+      Simple, fast and free developer tools for everyday data engineering
+      tasks. Format data, generate SQL, work with timestamps and build
+      Cron expressions without installing anything.
+    </p>
+
+    <div class="hero-buttons">
+      <a class="hero-button primary-button" href="#tools">
+        Explore Tools
+      </a>
+
+      <a class="hero-button secondary-button" href="#about">
+        About Toolkit
+      </a>
+    </div>
+  </section>
+
+
+  <!-- TOOLS -->
+  <section class="tools-section" id="tools">
+
+    <div class="section-heading">
+      <h2>Developer Tools</h2>
+      <p>
+        Useful utilities designed for data engineers, developers and
+        anyone working with data pipelines.
+      </p>
+    </div>
+
+    <div class="tools-grid">
+
+      <a class="tool-card" href="tools/json-formatter.html">
+        <div class="tool-icon">{ }</div>
+        <h3>JSON Formatter</h3>
+        <p>
+          Format, validate and minify JSON data quickly in your browser.
+        </p>
+        <span class="tool-link">Open Tool →</span>
+      </a>
+
+
+      <a class="tool-card" href="tools/json-to-sql.html">
+        <div class="tool-icon">SQL</div>
+        <h3>JSON → SQL</h3>
+        <p>
+          Convert JSON records into SQL INSERT statements.
+        </p>
+        <span class="tool-link">Open Tool →</span>
+      </a>
+
+
+      <a class="tool-card" href="tools/csv-to-sql.html">
+        <div class="tool-icon">CSV</div>
+        <h3>CSV → SQL</h3>
+        <p>
+          Convert CSV data into ready-to-use SQL INSERT statements.
+        </p>
+        <span class="tool-link">Open Tool →</span>
+      </a>
+
+
+      <a class="tool-card" href="tools/timestamp.html">
+        <div class="tool-icon">⏱</div>
+        <h3>Unix Timestamp</h3>
+        <p>
+          Convert Unix timestamps and human-readable dates instantly.
+        </p>
+        <span class="tool-link">Open Tool →</span>
+      </a>
+
+
+      <a class="tool-card" href="tools/cron.html">
+        <div class="tool-icon">⌘</div>
+        <h3>Cron Helper</h3>
+        <p>
+          Create and understand Cron schedules for automation and pipelines.
+        </p>
+        <span class="tool-link">Open Tool →</span>
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- FEATURES -->
+  <section class="features">
+
+    <div class="section-heading">
+      <h2>Built for Data Work</h2>
+      <p>
+        Everything is designed to keep common development tasks quick and simple.
+      </p>
+    </div>
+
+    <div class="feature-grid">
+
+      <div class="feature">
+        <div class="feature-icon">⚡</div>
+        <h3>Fast</h3>
+        <p>
+          Lightweight browser-based tools with no installation required.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">🔒</div>
+        <h3>Browser Based</h3>
+        <p>
+          Your input is processed directly in your browser for these tools.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">🛠</div>
+        <h3>Developer Focused</h3>
+        <p>
+          Practical utilities built around real development and data tasks.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">💻</div>
+        <h3>Free to Use</h3>
+        <p>
+          Access the toolkit without creating an account or installing software.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+
+    <h2>What is Data Engineer Toolkit?</h2>
+
+    <p>
+      Data Engineer Toolkit is a collection of lightweight online utilities
+      created to make everyday data engineering and development tasks easier.
+      From transforming data formats to working with SQL and automation
+      schedules, the goal is to keep useful tools in one simple place.
+    </p>
+
+  </section>
+
+
+  <!-- CTA -->
+  <section class="cta">
+
+    <h2>More tools are coming.</h2>
+
+    <p>
+      The toolkit will continue to grow with more SQL, AWS, Python,
+      ETL, cloud and data engineering utilities.
+    </p>
+
+    <a class="hero-button primary-button" href="#tools">
+      Start Using Tools
+    </a>
+
+  </section>
+
 </main>
-<footer>© 2026 Data Engineer Toolkit · Free developer utilities</footer>
+
+
+<footer class="footer">
+  <p>
+    © 2026 Data Engineer Toolkit. Built for developers and data engineers.
+  </p>
+</footer>
+
 </body>
 </html>
-<!-- GitHub Pages deployment refresh -->
