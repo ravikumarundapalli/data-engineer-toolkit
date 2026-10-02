@@ -10,176 +10,254 @@
         content="Free online tools for data engineers and developers. Format JSON, convert JSON and CSV to SQL, work with Unix timestamps, and generate Cron expressions.">
 
   <meta name="keywords"
-        content="data engineer tools, SQL tools, JSON formatter, CSV to SQL, JSON to SQL, cron generator, Unix timestamp, AWS, ETL">
-
-  <link rel="stylesheet" href="style.css">
+        content="data engineer tools, SQL tools, JSON formatter, CSV to SQL, JSON to SQL, cron generator, Unix timestamp, ETL tools">
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #080d1d;
+      color: #f8fafc;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* NAVIGATION */
+
+    .navbar {
+      width: 100%;
+      border-bottom: 1px solid #1d2942;
+      background: #080d1d;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1180px;
+      margin: auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #a5b4d4;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    /* HERO */
+
     .hero {
-      padding: 70px 20px 55px;
+      max-width: 1000px;
+      margin: auto;
+      padding: 95px 24px 85px;
       text-align: center;
     }
 
     .hero-badge {
       display: inline-block;
-      padding: 8px 14px;
+      padding: 7px 14px;
+      border: 1px solid #33446d;
       border-radius: 999px;
-      background: #eef2ff;
-      color: #4338ca;
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 20px;
+      color: #93b4ff;
+      font-size: 13px;
+      margin-bottom: 22px;
     }
 
     .hero h1 {
-      font-size: clamp(38px, 6vw, 64px);
+      margin: 0 auto 22px;
+      max-width: 900px;
+      font-size: clamp(42px, 7vw, 72px);
       line-height: 1.05;
-      margin: 0 auto 20px;
-      max-width: 850px;
+      letter-spacing: -2px;
     }
 
     .hero h1 span {
-      color: #4f46e5;
+      color: #6d9cff;
     }
 
-    .hero p {
+    .hero-description {
       max-width: 700px;
-      margin: 0 auto 30px;
-      font-size: 18px;
-      line-height: 1.7;
-      color: #64748b;
+      margin: auto;
+      color: #94a3c4;
+      font-size: 17px;
+      line-height: 1.8;
     }
 
     .hero-buttons {
+      margin-top: 32px;
       display: flex;
       justify-content: center;
       gap: 14px;
       flex-wrap: wrap;
     }
 
-    .hero-button {
+    .button {
       display: inline-block;
-      padding: 13px 22px;
-      border-radius: 10px;
+      padding: 12px 20px;
+      border-radius: 9px;
       text-decoration: none;
-      font-weight: 600;
+      font-size: 14px;
+      font-weight: 700;
       transition: 0.2s;
     }
 
     .primary-button {
-      background: #4f46e5;
-      color: white;
+      background: #4f7cff;
+      color: #ffffff;
     }
 
     .primary-button:hover {
-      background: #4338ca;
+      background: #3d68df;
       transform: translateY(-2px);
     }
 
     .secondary-button {
-      background: white;
-      color: #334155;
-      border: 1px solid #e2e8f0;
+      border: 1px solid #344361;
+      color: #d8e2ff;
+      background: #10182c;
     }
 
     .secondary-button:hover {
-      border-color: #94a3b8;
+      border-color: #6179ad;
       transform: translateY(-2px);
+    }
+
+    /* TOOLS */
+
+    .tools-section {
+      max-width: 1180px;
+      margin: auto;
+      padding: 45px 24px 90px;
     }
 
     .section-heading {
       text-align: center;
-      margin-bottom: 35px;
+      margin-bottom: 42px;
     }
 
     .section-heading h2 {
-      font-size: 32px;
-      margin-bottom: 10px;
+      margin: 0 0 10px;
+      font-size: 34px;
     }
 
     .section-heading p {
-      color: #64748b;
-      margin: 0 auto;
-      max-width: 650px;
-    }
-
-    .tools-section {
-      padding: 35px 20px 70px;
+      max-width: 680px;
+      margin: auto;
+      color: #8492b3;
     }
 
     .tools-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
-      max-width: 1100px;
-      margin: auto;
     }
 
     .tool-card {
-      background: white;
-      border: 1px solid #e2e8f0;
+      display: block;
+      background: #10182c;
+      border: 1px solid #263653;
       border-radius: 16px;
-      padding: 25px;
+      padding: 26px;
       text-decoration: none;
-      color: inherit;
+      color: #f8fafc;
       transition: 0.25s ease;
-      box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
+      min-height: 245px;
     }
 
     .tool-card:hover {
       transform: translateY(-5px);
-      border-color: #818cf8;
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.10);
+      border-color: #5f83e8;
+      background: #121d35;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
     }
 
     .tool-icon {
-      width: 48px;
-      height: 48px;
+      width: 50px;
+      height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 12px;
-      background: #eef2ff;
-      font-size: 22px;
-      margin-bottom: 18px;
+      border-radius: 13px;
+      background: #19284a;
+      color: #7da2ff;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 20px;
     }
 
     .tool-card h3 {
-      margin: 0 0 9px;
-      font-size: 19px;
+      margin: 0 0 10px;
+      color: #ffffff;
+      font-size: 20px;
     }
 
     .tool-card p {
       margin: 0;
-      color: #64748b;
-      line-height: 1.6;
+      color: #9eabc7;
       font-size: 14px;
+      line-height: 1.7;
     }
 
     .tool-link {
       display: inline-block;
-      margin-top: 18px;
-      color: #4f46e5;
+      margin-top: 20px;
+      color: #7da2ff;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
+    /* FEATURES */
+
     .features {
-      background: #f8fafc;
-      padding: 65px 20px;
+      border-top: 1px solid #18233b;
+      border-bottom: 1px solid #18233b;
+      background: #0c1224;
+      padding: 80px 24px;
     }
 
     .feature-grid {
-      max-width: 1000px;
+      max-width: 1050px;
       margin: auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 25px;
     }
 
     .feature {
       text-align: center;
-      padding: 20px;
+      padding: 15px;
     }
 
     .feature-icon {
@@ -189,273 +267,483 @@
 
     .feature h3 {
       margin: 0 0 8px;
-      font-size: 18px;
+      font-size: 17px;
     }
 
     .feature p {
       margin: 0;
-      color: #64748b;
-      line-height: 1.6;
+      color: #8492b3;
       font-size: 14px;
+      line-height: 1.6;
     }
+
+    /* ABOUT */
 
     .about {
       max-width: 850px;
       margin: auto;
-      padding: 70px 20px;
+      padding: 85px 24px;
       text-align: center;
     }
 
     .about h2 {
-      font-size: 30px;
-      margin-bottom: 15px;
+      margin: 0 0 18px;
+      font-size: 32px;
     }
 
     .about p {
-      color: #64748b;
-      line-height: 1.8;
+      margin: 0;
+      color: #94a3c4;
       font-size: 16px;
+      line-height: 1.9;
+    }
+
+    /* CTA */
+
+    .cta-wrapper {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 24px 85px;
     }
 
     .cta {
-      margin: 0 20px 70px;
-      padding: 50px 25px;
+      padding: 55px 25px;
       text-align: center;
-      background: #111827;
-      color: white;
+      border: 1px solid #263653;
       border-radius: 20px;
+      background: linear-gradient(
+        135deg,
+        #111d38,
+        #10172a
+      );
     }
 
     .cta h2 {
       margin: 0 0 12px;
-      font-size: 30px;
+      font-size: 31px;
     }
 
     .cta p {
-      color: #cbd5e1;
-      max-width: 600px;
+      max-width: 620px;
       margin: 0 auto 25px;
-      line-height: 1.7;
+      color: #94a3c4;
     }
 
-    .footer {
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid #1b2942;
+      padding: 30px 24px;
       text-align: center;
-      padding: 30px 20px;
-      border-top: 1px solid #e2e8f0;
-      color: #64748b;
-      font-size: 14px;
+      color: #71809f;
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 900px) {
+
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
     }
 
     @media (max-width: 600px) {
+
+      .nav-container {
+        padding: 15px 18px;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+
       .hero {
-        padding-top: 45px;
+        padding: 65px 20px;
       }
 
-      .hero p {
-        font-size: 16px;
+      .hero h1 {
+        font-size: 42px;
+        letter-spacing: -1px;
       }
 
-      .section-heading h2,
-      .about h2,
+      .hero-description {
+        font-size: 15px;
+      }
+
+      .tools-section {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading h2 {
+        font-size: 28px;
+      }
+
+      .about h2 {
+        font-size: 28px;
+      }
+
       .cta h2 {
         font-size: 26px;
       }
+
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <div class="container">
-    <a class="brand" href="./index.html">Data Engineer Toolkit</a>
-  </div>
-</header>
+  <!-- NAVIGATION -->
 
-<main>
+  <header class="navbar">
+    <div class="nav-container">
+
+      <a class="brand" href="./index.html">
+        Data Engineer Toolkit
+      </a>
+
+      <nav class="nav-links">
+        <a href="#tools">Tools</a>
+        <a href="#about">About</a>
+      </nav>
+
+    </div>
+  </header>
+
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="hero-badge">
-      Free Tools for Data Engineers
-    </div>
 
-    <h1>
-      Work smarter with your
-      <span>data engineering toolkit.</span>
-    </h1>
+  <main>
 
-    <p>
-      Simple, fast and free developer tools for everyday data engineering
-      tasks. Format data, generate SQL, work with timestamps and build
-      Cron expressions without installing anything.
-    </p>
+    <section class="hero">
 
-    <div class="hero-buttons">
-      <a class="hero-button primary-button" href="#tools">
-        Explore Tools
-      </a>
+      <div class="hero-badge">
+        Free • Fast • Browser Based
+      </div>
 
-      <a class="hero-button secondary-button" href="#about">
-        About Toolkit
-      </a>
-    </div>
-  </section>
+      <h1>
+        Useful tools for
+        <span>Data Engineers.</span>
+      </h1>
 
-
-  <!-- TOOLS -->
-  <section class="tools-section" id="tools">
-
-    <div class="section-heading">
-      <h2>Developer Tools</h2>
-      <p>
-        Useful utilities designed for data engineers, developers and
-        anyone working with data pipelines.
+      <p class="hero-description">
+        Simple, practical utilities for SQL, JSON, CSV, timestamps,
+        automation and everyday data engineering work.
+        No signup required.
       </p>
-    </div>
 
-    <div class="tools-grid">
+      <div class="hero-buttons">
 
-      <a class="tool-card" href="tools/json-formatter.html">
-        <div class="tool-icon">{ }</div>
-        <h3>JSON Formatter</h3>
+        <a class="button primary-button" href="#tools">
+          Explore Tools
+        </a>
+
+        <a class="button secondary-button" href="#about">
+          Learn More
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- TOOLS -->
+
+    <section class="tools-section" id="tools">
+
+      <div class="section-heading">
+
+        <h2>Developer Tools</h2>
+
         <p>
-          Format, validate and minify JSON data quickly in your browser.
+          Useful utilities designed for data engineers,
+          developers and anyone working with data pipelines.
         </p>
-        <span class="tool-link">Open Tool →</span>
-      </a>
+
+      </div>
 
 
-      <a class="tool-card" href="tools/json-to-sql.html">
-        <div class="tool-icon">SQL</div>
-        <h3>JSON → SQL</h3>
+      <div class="tools-grid">
+
+
+        <!-- JSON FORMATTER -->
+
+        <a class="tool-card" href="tools/json-formatter.html">
+
+          <div class="tool-icon">
+            { }
+          </div>
+
+          <h3>JSON Formatter</h3>
+
+          <p>
+            Format, validate and minify JSON data quickly
+            directly in your browser.
+          </p>
+
+          <span class="tool-link">
+            Open Tool →
+          </span>
+
+        </a>
+
+
+        <!-- JSON TO SQL -->
+
+        <a class="tool-card" href="tools/json-to-sql.html">
+
+          <div class="tool-icon">
+            SQL
+          </div>
+
+          <h3>JSON → SQL</h3>
+
+          <p>
+            Convert JSON records into ready-to-use
+            SQL INSERT statements.
+          </p>
+
+          <span class="tool-link">
+            Open Tool →
+          </span>
+
+        </a>
+
+
+        <!-- CSV TO SQL -->
+
+        <a class="tool-card" href="tools/csv-to-sql.html">
+
+          <div class="tool-icon">
+            CSV
+          </div>
+
+          <h3>CSV → SQL</h3>
+
+          <p>
+            Convert CSV data into SQL INSERT statements
+            for your database workflows.
+          </p>
+
+          <span class="tool-link">
+            Open Tool →
+          </span>
+
+        </a>
+
+
+        <!-- TIMESTAMP -->
+
+        <a class="tool-card" href="tools/timestamp.html">
+
+          <div class="tool-icon">
+            TIME
+          </div>
+
+          <h3>Unix Timestamp</h3>
+
+          <p>
+            Convert Unix timestamps and human-readable
+            dates instantly.
+          </p>
+
+          <span class="tool-link">
+            Open Tool →
+          </span>
+
+        </a>
+
+
+        <!-- CRON -->
+
+        <a class="tool-card" href="tools/cron.html">
+
+          <div class="tool-icon">
+            CRON
+          </div>
+
+          <h3>Cron Helper</h3>
+
+          <p>
+            Create and understand Cron schedules for
+            automation and data pipelines.
+          </p>
+
+          <span class="tool-link">
+            Open Tool →
+          </span>
+
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section class="features">
+
+      <div class="section-heading">
+
+        <h2>Built for Real Data Work</h2>
+
         <p>
-          Convert JSON records into SQL INSERT statements.
+          Lightweight tools designed around common
+          development and data engineering tasks.
         </p>
-        <span class="tool-link">Open Tool →</span>
-      </a>
+
+      </div>
 
 
-      <a class="tool-card" href="tools/csv-to-sql.html">
-        <div class="tool-icon">CSV</div>
-        <h3>CSV → SQL</h3>
-        <p>
-          Convert CSV data into ready-to-use SQL INSERT statements.
-        </p>
-        <span class="tool-link">Open Tool →</span>
-      </a>
+      <div class="feature-grid">
+
+        <div class="feature">
+
+          <div class="feature-icon">
+            ⚡
+          </div>
+
+          <h3>Fast</h3>
+
+          <p>
+            Lightweight tools that work directly
+            in your browser.
+          </p>
+
+        </div>
 
 
-      <a class="tool-card" href="tools/timestamp.html">
-        <div class="tool-icon">⏱</div>
-        <h3>Unix Timestamp</h3>
-        <p>
-          Convert Unix timestamps and human-readable dates instantly.
-        </p>
-        <span class="tool-link">Open Tool →</span>
-      </a>
+        <div class="feature">
+
+          <div class="feature-icon">
+            🔒
+          </div>
+
+          <h3>Browser Based</h3>
+
+          <p>
+            These tools process your input locally
+            in your browser.
+          </p>
+
+        </div>
 
 
-      <a class="tool-card" href="tools/cron.html">
-        <div class="tool-icon">⌘</div>
-        <h3>Cron Helper</h3>
-        <p>
-          Create and understand Cron schedules for automation and pipelines.
-        </p>
-        <span class="tool-link">Open Tool →</span>
-      </a>
+        <div class="feature">
 
-    </div>
-  </section>
+          <div class="feature-icon">
+            🛠
+          </div>
+
+          <h3>Practical</h3>
+
+          <p>
+            Built around real-world developer
+            and data engineering tasks.
+          </p>
+
+        </div>
 
 
-  <!-- FEATURES -->
-  <section class="features">
+        <div class="feature">
 
-    <div class="section-heading">
-      <h2>Built for Data Work</h2>
+          <div class="feature-icon">
+            💻
+          </div>
+
+          <h3>Free</h3>
+
+          <p>
+            No account, installation or signup
+            required to use the tools.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+
+      <h2>
+        What is Data Engineer Toolkit?
+      </h2>
+
       <p>
-        Everything is designed to keep common development tasks quick and simple.
+        Data Engineer Toolkit is a collection of lightweight
+        online utilities designed to make everyday data
+        engineering and development tasks easier.
+        From transforming data formats to generating SQL
+        and working with automation schedules, the goal is
+        to keep useful tools in one simple place.
       </p>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="cta-wrapper">
+
+      <div class="cta">
+
+        <h2>
+          More Data Engineering Tools Coming Soon
+        </h2>
+
+        <p>
+          We're building more utilities for SQL, Python,
+          AWS, ETL, cloud platforms and modern data pipelines.
+        </p>
+
+        <a class="button primary-button" href="#tools">
+          Start Using Tools
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div>
+      © 2026 Data Engineer Toolkit
     </div>
 
-    <div class="feature-grid">
-
-      <div class="feature">
-        <div class="feature-icon">⚡</div>
-        <h3>Fast</h3>
-        <p>
-          Lightweight browser-based tools with no installation required.
-        </p>
-      </div>
-
-      <div class="feature">
-        <div class="feature-icon">🔒</div>
-        <h3>Browser Based</h3>
-        <p>
-          Your input is processed directly in your browser for these tools.
-        </p>
-      </div>
-
-      <div class="feature">
-        <div class="feature-icon">🛠</div>
-        <h3>Developer Focused</h3>
-        <p>
-          Practical utilities built around real development and data tasks.
-        </p>
-      </div>
-
-      <div class="feature">
-        <div class="feature-icon">💻</div>
-        <h3>Free to Use</h3>
-        <p>
-          Access the toolkit without creating an account or installing software.
-        </p>
-      </div>
-
+    <div>
+      Free tools for developers and data engineers.
     </div>
-  </section>
 
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-
-    <h2>What is Data Engineer Toolkit?</h2>
-
-    <p>
-      Data Engineer Toolkit is a collection of lightweight online utilities
-      created to make everyday data engineering and development tasks easier.
-      From transforming data formats to working with SQL and automation
-      schedules, the goal is to keep useful tools in one simple place.
-    </p>
-
-  </section>
-
-
-  <!-- CTA -->
-  <section class="cta">
-
-    <h2>More tools are coming.</h2>
-
-    <p>
-      The toolkit will continue to grow with more SQL, AWS, Python,
-      ETL, cloud and data engineering utilities.
-    </p>
-
-    <a class="hero-button primary-button" href="#tools">
-      Start Using Tools
-    </a>
-
-  </section>
-
-</main>
-
-
-<footer class="footer">
-  <p>
-    © 2026 Data Engineer Toolkit. Built for developers and data engineers.
-  </p>
-</footer>
+  </footer>
 
 </body>
 </html>
